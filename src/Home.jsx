@@ -461,53 +461,51 @@ function Home() {
                 </section>
 
                 {/* <!-- Feature Cards --> */}
-                <section className="max-w-7xl mx-auto px-4 pb-10">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+              <section className="max-w-7xl mx-auto px-4 pb-10">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    {/* Feature Item */}
+    <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
+      <img src={offers} alt="Offer Icon" className="h-10 w-10" />
+      <div>
+        <h4 className="font-semibold text-lg">Best prices & offers</h4>
+        <p className="text-sm text-gray-500">Orders $50 or more</p>
+      </div>
+    </div>
 
-                        {/* <!-- Feature --> */}
-                        <div className="bg-gray-50 p-2 h-20 flex rounded-lg shadow text-center">
-                            <img src={offers} className="mx-auto h-10 my-2" />
-                            <div>                           
-                            <h4 className="font-semibold !text-lg">Best prices & offers</h4>
-                            <p className="text-sm text-gray-500">Orders $50 or more</p>
-                            </div>
-                        </div>
+    <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
+      <img src={offers1} alt="Free Delivery" className="h-10 w-10" />
+      <div>
+        <h4 className="font-semibold text-lg">Free delivery</h4>
+        <p className="text-sm text-gray-500">24/7 amazing services</p>
+      </div>
+    </div>
 
-                        <div className="bg-gray-50 p-2 h-20 flex rounded-lg shadow text-center">
-                            <img src={offers1}  className="mx-auto h-10 my-2" />
-                            <div>
-                            <h4 className="font-semibold !text-lg">Free delivery</h4>
-                            <p className="text-sm text-gray-500">24/7 amazing services</p>
-                            </div>
-                        </div>
+    <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
+      <img src={offers2} alt="Daily Deal" className="h-10 w-10" />
+      <div>
+        <h4 className="font-semibold text-lg">Great daily deal</h4>
+        <p className="text-sm text-gray-500">When you sign up</p>
+      </div>
+    </div>
 
-                        <div className="bg-gray-50 p-2 h-20 flex rounded-lg shadow text-center">
-                            <img src={offers2} className="mx-auto h-10 my-2" />
-                            <div>
-                            <h4 className="font-semibold !text-lg">Great daily deal</h4>
-                            <p className="text-sm text-gray-500">When you sign up</p>
-                            </div>
-                        </div>
+    <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
+      <img src={offers3} alt="Wide Assortment" className="h-10 w-10" />
+      <div>
+        <h4 className="font-semibold text-lg">Wide assortment</h4>
+        <p className="text-sm text-gray-500">Mega Discounts</p>
+      </div>
+    </div>
 
-                        <div className="bg-gray-50 p-2 h-20 flex rounded-lg shadow text-center">
-                            <img src={offers3} className="mx-auto h-10 my-2" />
-                            <div>
-                            <h4 className="font-semibold !text-lg">Wide assortment</h4>
-                            <p className="text-sm text-gray-500">Mega Discounts</p>
-                            </div>
-                        </div>
+    <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
+      <img src={offers4} alt="Easy Returns" className="h-10 w-10" />
+      <div>
+        <h4 className="font-semibold text-lg">Easy returns</h4>
+        <p className="text-sm text-gray-500">Within 30 days</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-                        <div className="bg-gray-50 p-2 flex h-20 rounded-lg shadow text-center">
-                            <img src={offers4} className="mx-auto h-10 my-2" />
-                            
-                           <div>
-                            <h4 className="font-semibold !text-lg">Easy returns</h4>
-                            <p className="text-sm text-gray-500">Within 30 days</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </section>
 
 
 
