@@ -39,7 +39,7 @@ function Home() {
 
 
             <img src={img1} alt="" className=" w-full lg:h-full md:h-110" />
-            <img src={img} alt="" className="absolute lg:top-1/2 md:top-50 left-1/3 top-1/2 w-50 -translate-x-1/2 -translate-y-1/2 w-3/4 md:w-1/2" />
+            <img src={img} alt="" className="absolute lg:top-1/2 md:top-50 left-1/3 top-40 w-50 -translate-x-1/2 -translate-y-1/2 w-3/4 md:w-1/2" />
             <div className=" mx-auto flex flex-col md:flex-row justify-around md:bottom-35 bottom-10  relative items-center gap-8">
 
 
