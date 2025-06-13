@@ -402,7 +402,7 @@ function Home() {
 
       {/* Feature 1 */}
       <div className="flex items-start gap-4 mb-6 p-4 bg-white rounded-xl shadow hover:shadow-md transition">
-        <div className=" p-3 rounded-full flex items-center justify-center">
+        <div className="bg-yellow-100 p-3 rounded-full flex items-center justify-center">
           <img src={icon01} alt="" className="w-10 sm:w-12" />
         </div>
         <div>
