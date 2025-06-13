@@ -63,7 +63,7 @@ const home1 = () => {
             <Nevbar />
             <div  >
                 <img src={img} alt="" className=" w-full lg:h-full md:h-110" />
-                <img src={img2} alt="" className="absolute flex right-1 md:top-45 md:w-3/4 top-30 w-3/4 lg:w-2/3 " />
+                <img src={img2} alt="" className="absolute flex right-1 md:top-45 md:w-3/4  w-3/4 lg:w-2/3 " />
                 <div className="relative  w-full">
                     <button className="flex absolute left-11 -top-20  md:left-25 lg:left-53 items-center gap-2 bg-[#cc7a1c] text-white !text-xs lg:px-4  lg:py-2 px-2 py-1 !rounded-full hover:bg-[#b86810] transition duration-300 md:-top-45 w-30 lg:w-auto lg:-top-70 ">
                         <span className="bg-white text-[#cc7a1c] rounded-full w-7 h-7 flex items-center justify-center">
