@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Nevbar from './Nevbar'
-import img from "../assets/background.png";
+import img from "../assets/Background.png";
 import img2 from "../assets/freepik.png";
 import cackproduct from "../assets/3.jpg.png";
 import milkproduct from "../assets/4.jpg.png";
