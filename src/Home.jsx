@@ -382,7 +382,72 @@ function Home() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div><section className="bg-white px-4 sm:px-6 lg:px-8 pt-0 pb-16">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    
+    {/* Left Image */}
+    <div className="flex justify-center">
+      <img
+        src={image28}
+        alt="Salad Dish"
+        className="rounded-2xl shadow-md w-full max-w-md md:max-w-lg"
+      />
+    </div>
+
+    {/* Right Content */}
+    <div>
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-[Nunito] font-bold mb-10">
+        Why People Choose Us?
+      </h2>
+
+      {/* Feature 1 */}
+      <div className="flex items-start gap-4 mb-6 p-4 bg-white rounded-xl shadow hover:shadow-md transition">
+        <div className=" p-3 rounded-full flex items-center justify-center">
+          <img src={icon01} alt="" className="w-10 sm:w-12" />
+        </div>
+        <div>
+          <h4 className="text-xl sm:text-2xl font-semibold mb-1">
+            Convenient and Reliable
+          </h4>
+          <p className="text-sm text-gray-600 font-[Nunito] font-medium">
+            Whether you dine in, take out, or order delivery, our service is convenient, fast, and reliable, making mealtime hassle-free.
+          </p>
+        </div>
+      </div>
+
+      {/* Feature 2 */}
+      <div className="flex items-start gap-4 mb-6 p-4 bg-white rounded-xl shadow hover:shadow-md transition">
+        <div className="bg-yellow-100 p-3 rounded-full flex items-center justify-center">
+          <img src={icon02} alt="" className="w-10 sm:w-12" />
+        </div>
+        <div>
+          <h4 className="text-xl sm:text-2xl font-semibold mb-1">
+            Variety of Options
+          </h4>
+          <p className="text-sm text-gray-600 font-[Nunito] font-medium">
+            From hearty meals to light snacks, we offer a wide range of options to suit every taste and craving.
+          </p>
+        </div>
+      </div>
+
+      {/* Feature 3 */}
+      <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow hover:shadow-md transition">
+        <div className="bg-yellow-100 p-3 rounded-full flex items-center justify-center">
+          <img src={icon03} alt="" className="w-10 sm:w-12" />
+        </div>
+        <div>
+          <h4 className="text-xl sm:text-2xl font-semibold mb-1">
+            Eat Burger
+          </h4>
+          <p className="text-sm text-gray-600 font-[Nunito] font-medium">
+            Our burgers are grilled to perfection, with juicy patties and flavorful toppings that make every bite a delicious experience.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
                 </section>
 
                 <section className="bg-white py-16 pt-0 px-8">
@@ -400,7 +465,7 @@ function Home() {
                             {/* <!-- Feature 1 --> */}
                             <div className="flex items-start space-x-4 mb-6 p-4 pb-0 pe-5 lg:w-120 bg-white rounded-xl shadow hover:shadow-md transition">
                                 <div className="bg-yellow-100 text-yellow-500 rounded-full p-3">
-                                    <img src={icon01} alt="" />
+                                    <img src={icon01} alt="" className="w-60"  />
                                 </div>
                                 <div>
                                     <h4 className="!text-3xl font-semibold">Convenient and Reliable</h4>
@@ -410,8 +475,8 @@ function Home() {
 
                             {/* <!-- Feature 2 --> */}
                             <div className="flex items-start space-x-4 mb-6 p-4 pb-0 pe-5 lg:w-120 bg-white rounded-xl shadow hover:shadow-md transition">
-                                <div className="bg-yellow-100 text-yellow-500 rounded-full p-3">
-                                    <img src={icon02} alt="" />
+                                <div className="bg-yellow-100 text-yellow-500 rounded-full p-2">
+                                    <img src={icon02} alt="" className="w-30"  />
                                 </div>
                                 <div>
                                     <h4 className="!text-3xl font-semibold">Variety of Options</h4>
@@ -421,8 +486,8 @@ function Home() {
 
                             {/* <!-- Feature 3 --> */}
                             <div className="flex items-start space-x-4 p-4 pb-0 pe-5 lg:w-120 bg-white rounded-xl shadow hover:shadow-md transition">
-                                <div className="bg-yellow-100 text-yellow-500 rounded-full p-3">
-                                    <img src={icon03} alt="" />
+                                <div className="bg-yellow-100 text-yellow-500 rounded-full p-2">
+                                    <img src={icon03} alt="" className="w-30" />
                                 </div>
                                 <div>
                                     <h4 className="!text-3xl font-semibold">Eat Burger</h4>
@@ -461,7 +526,7 @@ function Home() {
                 </section>
 
                 {/* <!-- Feature Cards --> */}
-              <section className="max-w-7xl mx-auto px-4 pb-10">
+               <section className="max-w-7xl mx-auto px-4 pb-10">
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
     {/* Feature Item */}
     <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
