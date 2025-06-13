@@ -14,7 +14,7 @@ import Allproductlist from "./Allproductlist";
 import Aboutus from "./Aboutus";
 import Login from "./Componenets/Login";
 import Ragistion from "./Componenets/Ragistion";
-import Cart from "./cart";
+import Cart from "./Cart";
 import Checkout from "./Checkout";
 import Faq from "./Faq";
 
