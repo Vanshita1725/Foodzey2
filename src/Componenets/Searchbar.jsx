@@ -11,7 +11,7 @@ return (
 
             <div className="relative">
                 <button className="flex items-center justify-between px-2 h-full bg-white border-l border-green-400" >
-                  <p className="pt-2 mt-1 me-2 text-sm md:flex">All categories</p>
+                  <p className="pt-2 mt-1 me-2 text-xs !md:text-sm md:flex">All categories</p>
                   <ion-icon name="chevron-down"></ion-icon>
                 </button>
             </div>

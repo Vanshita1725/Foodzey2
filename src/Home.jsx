@@ -403,7 +403,7 @@ function Home() {
       {/* Feature 1 */}
       <div className="flex items-start gap-4 mb-6 p-4 bg-white rounded-xl shadow hover:shadow-md transition">
         <div className="bg-yellow-100 p-3 rounded-full flex items-center justify-center">
-          <img src={icon01} alt="" className="w-10 sm:w-12" />
+          <img src={icon01} alt="" className="w-15 sm:w-15" />
         </div>
         <div>
           <h4 className="text-xl sm:text-2xl font-semibold mb-1">
@@ -418,7 +418,7 @@ function Home() {
       {/* Feature 2 */}
       <div className="flex items-start gap-4 mb-6 p-4 bg-white rounded-xl shadow hover:shadow-md transition">
         <div className="bg-yellow-100 p-3 rounded-full flex items-center justify-center">
-          <img src={icon02} alt="" className="w-10 sm:w-12" />
+          <img src={icon02} alt="" className="w-15 sm:w-15" />
         </div>
         <div>
           <h4 className="text-xl sm:text-2xl font-semibold mb-1">
@@ -433,7 +433,7 @@ function Home() {
       {/* Feature 3 */}
       <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow hover:shadow-md transition">
         <div className="bg-yellow-100 p-3 rounded-full flex items-center justify-center">
-          <img src={icon03} alt="" className="w-10 sm:w-12" />
+          <img src={icon03} alt="" className="w-15 sm:w-15" />
         </div>
         <div>
           <h4 className="text-xl sm:text-2xl font-semibold mb-1">
@@ -450,54 +450,7 @@ function Home() {
 
                 </section>
 
-                <section className="bg-white py-16 pt-0 px-8">
-                    <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1  lg:grid-cols-2 gap-10 lg:items-start md:items-center">
-
-                        {/* <!-- Left Image --> */}
-                        <div>
-                            <img src={image28} alt="Salad Dish" className="rounded-2xl md:h-110 shadow-md md:w-120" />
-                        </div>
-
-                        {/* <!-- Right Content --> */}
-                        <div>
-                            <h2 className="!text-5xl font-[Nunito] font-bold mb-8">Why People Choose us?</h2>
-
-                            {/* <!-- Feature 1 --> */}
-                            <div className="flex items-start space-x-4 mb-6 p-4 pb-0 pe-5 lg:w-120 bg-white rounded-xl shadow hover:shadow-md transition">
-                                <div className="bg-yellow-100 text-yellow-500 rounded-full p-3">
-                                    <img src={icon01} alt="" className="w-60"  />
-                                </div>
-                                <div>
-                                    <h4 className="!text-3xl font-semibold">Convenient and Reliable</h4>
-                                    <p className="text-sm font-bold font-[Nunito] text-gray-600">Whether you dine in, take out, or order delivery, our service is convenient, fast, and reliable, making mealtime hassle-free.</p>
-                                </div>
-                            </div>
-
-                            {/* <!-- Feature 2 --> */}
-                            <div className="flex items-start space-x-4 mb-6 p-4 pb-0 pe-5 lg:w-120 bg-white rounded-xl shadow hover:shadow-md transition">
-                                <div className="bg-yellow-100 text-yellow-500 rounded-full p-2">
-                                    <img src={icon02} alt="" className="w-30"  />
-                                </div>
-                                <div>
-                                    <h4 className="!text-3xl font-semibold">Variety of Options</h4>
-                                    <p className="text-sm font-bold font-[Nunito] text-gray-600">From hearty meals to light snacks, we offer a wide range of options to suit every taste and craving.</p>
-                                </div>
-                            </div>
-
-                            {/* <!-- Feature 3 --> */}
-                            <div className="flex items-start space-x-4 p-4 pb-0 pe-5 lg:w-120 bg-white rounded-xl shadow hover:shadow-md transition">
-                                <div className="bg-yellow-100 text-yellow-500 rounded-full p-2">
-                                    <img src={icon03} alt="" className="w-30" />
-                                </div>
-                                <div>
-                                    <h4 className="!text-3xl font-semibold">Eat Burger</h4>
-                                    <p className="text-sm font-bold font-[Nunito] text-gray-600">Our burgers are grilled to perfection, with juicy patties and flavorful toppings that make every bite a delicious experience.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
+                
                 <section className="max-w-7xl mx-auto px-4 py-10">
                     <div className="bg-gradient-to-r from-[#6b5d3e] to-black rounded-3xl lg:p-0 lg:ps-10 p-10 flex flex-col lg:flex-row items-center justify-between relative overflow-hidden">
 
