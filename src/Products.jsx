@@ -12,45 +12,53 @@ import { FaFilter, FaThLarge, FaThList } from 'react-icons/fa';
 import { useState } from "react";
 function Products() {
 
-    const [view, setView] = useState('grid');
+    const [view, setView] = useState('grid'); // default view
     const [sort, setSort] = useState('featured');
 
     return (
         <div>
 
             <Nevbar />
-           <div className="flex text-white bg-red-600 justify-between text-center py-3 ps-42 pe-37 items-center ">
+            <div className="flex text-white bg-red-600 justify-between  py-3 ps-42 pe-37 ">
                 <p className="m-0">Product</p>
                 <p className="m-0">Home-Product</p>
             </div>
 
             <div className="flex flex-col sm:flex-row sm:justify-evenly sm:items-center border border-gray-200 p-3 rounded-md bg-gray-50">
-                <div className="flex items-center gap-2 mb-2 sm:mb-0">
-                    <button className={`p-2 rounded border ${view === 'Filter'
-                                ? 'bg-red-600 text-white'
-                                : 'bg-white text-black hover:bg-gray-100'
-                            }`}>
+                <div className="flex flex-wrap items-center gap-2 mb-4 sm:mb-0">
+                    <button
+                        onClick={() => setView('Filter')}
+                        className={`p-2 rounded border transition-colors duration-200 ${view === 'Filter'
+                                ? 'bg-red-600 text-white border-red-600'
+                                : 'bg-white text-black border-gray-300 hover:bg-red-50 hover:text-red-600 hover:border-red-600'
+                            }`}
+                    >
                         <FaFilter />
                     </button>
+
                     <button
                         onClick={() => setView('grid')}
-                        className={`p-2 rounded border ${view === 'grid'
-                                ? 'bg-red-600 text-white'
-                                : 'bg-white text-black hover:bg-gray-100'
+                        className={`p-2 rounded border transition-colors duration-200 ${view === 'grid'
+                                ? 'bg-red-600 text-white border-red-600'
+                                : 'bg-white text-black border-gray-300 hover:bg-red-50 hover:text-red-600 hover:border-red-600'
                             }`}
                     >
                         <FaThLarge />
                     </button>
+
                     <button
                         onClick={() => setView('list')}
-                        className={`p-2 rounded border ${view === 'list'
-                                ? 'bg-red-600 text-white'
-                                : 'bg-white text-black hover:bg-gray-100'
+                        className={`p-2 rounded border transition-colors duration-200 ${view === 'list'
+                                ? 'bg-red-600 text-white border-red-600'
+                                : 'bg-white text-black border-gray-300 hover:bg-red-50 hover:text-red-600 hover:border-red-600'
                             }`}
                     >
                         <FaThList />
                     </button>
-                    <span className="ml-3 text-sm text-gray-700">We found 29 items for you!</span>
+
+                    <span className="ml-3 text-sm text-gray-700">
+                        We found <span className="font-semibold">29</span> items for you!
+                    </span>
                 </div>
 
                 <div>
@@ -67,97 +75,101 @@ function Products() {
                     </select>
                 </div>
             </div>
-            
+
             <div className=" lg:flex">
-                <div className="w-full max-w-xs p-4 bg-white m-10 h-253  flex rounded-lg shadow-md space-y-6">
-                    <div>               {/* <!-- Product Category --> */}
-                        <div className="p-3">
-                            <h3 className="text-lg font-semibold border-b pb-2 mb-3">Product Category</h3>
-                            <ul className="space-y-2">
-                                <li className="flex justify-between items-center">
-                                    <label className="inline-flex items-center">
-                                        <input type="checkbox" className="form-checkbox text-red-500 mr-2" />
+                <div className="w-full max-w-xl p-4 bg-white m-10 h-253  flex rounded-lg shadow-md space-y-6">
+                    <div class="w-full  p-4 bg-white rounded shadow-md space-y-6">
+
+                        {/* <!-- Product Category --> */}
+                        <div>
+                            <h3 class="text-lg font-semibold border-b pb-2 mb-3">Product Category</h3>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between items-center">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="form-checkbox text-red-500 mr-2" />
                                         Juice & Drinks
                                     </label>
-                                    <span className="text-gray-500 text-sm">[20]</span>
+                                    <span class="text-gray-500 text-sm">[20]</span>
                                 </li>
-                                <li className="flex justify-between items-center">
-                                    <label className="inline-flex items-center">
-                                        <input type="checkbox" className="form-checkbox text-red-500 mr-2" />
+                                <li class="flex justify-between items-center">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="form-checkbox text-red-500 mr-2" />
                                         Dairy & Milk
                                     </label>
-                                    <span className="text-gray-500 text-sm">[54]</span>
+                                    <span class="text-gray-500 text-sm">[54]</span>
                                 </li>
-                                <li className="flex justify-between items-center">
-                                    <label className="inline-flex items-center">
-                                        <input type="checkbox" className="form-checkbox text-red-500 mr-2" />
+                                <li class="flex justify-between items-center">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="form-checkbox text-red-500 mr-2" />
                                         Snack & Spice
                                     </label>
-                                    <span className="text-gray-500 text-sm">[64]</span>
+                                    <span class="text-gray-500 text-sm">[64]</span>
                                 </li>
                             </ul>
                         </div>
 
                         {/* <!-- Filter By Price --> */}
                         <div>
-                            <h3 className="text-lg font-semibold border-b pb-2 mb-3">Filter By Price</h3>
-                            <p className="font-semibold text-gray-800 mb-3">Price : $20 - $250</p>
-                            <button className="bg-red-500 text-white w-full py-2 rounded hover:bg-red-600 transition">
+                            <h3 class="text-lg font-semibold border-b pb-2 mb-3">Filter By Price</h3>
+                            <p class="font-semibold text-gray-800 mb-3">Price : $20 - $250</p>
+                            <button class="bg-red-500 text-white w-full py-2 rounded hover:bg-red-600 transition duration-200">
                                 Filter
                             </button>
                         </div>
 
                         {/* <!-- Product Category Colors --> */}
                         <div>
-                            <h3 className="text-lg font-semibold border-b pb-2 mb-3">Product Category</h3>
-                            <ul className="space-y-2">
-                                <li className="flex justify-between items-center">
-                                    <label className="inline-flex items-center">
-                                        <input type="checkbox" className="form-checkbox mr-2" />
+                            <h3 class="text-lg font-semibold border-b pb-2 mb-3">Colors</h3>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between items-center">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="form-checkbox mr-2" />
                                         Blue
                                     </label>
-                                    <span className="w-4 h-4 rounded bg-blue-500"></span>
+                                    <span class="w-4 h-4 rounded-full bg-blue-500"></span>
                                 </li>
-                                <li className="flex justify-between items-center">
-                                    <label className="inline-flex items-center">
-                                        <input type="checkbox" className="form-checkbox mr-2" />
+                                <li class="flex justify-between items-center">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="form-checkbox mr-2" />
                                         Yellow
                                     </label>
-                                    <span className="w-4 h-4 rounded bg-yellow-400"></span>
+                                    <span class="w-4 h-4 rounded-full bg-yellow-400"></span>
                                 </li>
-                                <li className="flex justify-between items-center">
-                                    <label className="inline-flex items-center">
-                                        <input type="checkbox" className="form-checkbox mr-2" />
+                                <li class="flex justify-between items-center">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="form-checkbox mr-2" />
                                         Red
                                     </label>
-                                    <span className="w-4 h-4 rounded bg-red-500"></span>
+                                    <span class="w-4 h-4 rounded-full bg-red-500"></span>
                                 </li>
                             </ul>
                         </div>
 
                         {/* <!-- Weight --> */}
                         <div>
-                            <h3 className="text-lg font-semibold border-b pb-2 mb-3">Weight</h3>
-                            <ul className="space-y-2">
-                                <li><label className="inline-flex items-center"><input type="checkbox" className="form-checkbox mr-2" /> 2kg Pack</label></li>
-                                <li><label className="inline-flex items-center"><input type="checkbox" className="form-checkbox mr-2" /> 20kg Pack</label></li>
-                                <li><label className="inline-flex items-center"><input type="checkbox" className="form-checkbox mr-2" /> 30kg Pack</label></li>
+                            <h3 class="text-lg font-semibold border-b pb-2 mb-3">Weight</h3>
+                            <ul class="space-y-2">
+                                <li><label class="inline-flex items-center"><input type="checkbox" class="form-checkbox mr-2" /> 2kg Pack</label></li>
+                                <li><label class="inline-flex items-center"><input type="checkbox" class="form-checkbox mr-2" /> 20kg Pack</label></li>
+                                <li><label class="inline-flex items-center"><input type="checkbox" class="form-checkbox mr-2" /> 30kg Pack</label></li>
                             </ul>
                         </div>
 
                         {/* <!-- Product Tags --> */}
                         <div>
-                            <h3 className="text-lg font-semibold border-b pb-2 mb-3">Products Tages</h3>
-                            <div className="flex flex-wrap gap-2">
-                                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Vegetables</span>
-                                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Juice</span>
-                                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Food</span>
-                                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Dry Fruits</span>
-                                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Vegetables</span>
-                                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Juice</span>
+                            <h3 class="text-lg font-semibold border-b pb-2 mb-3">Product Tags</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Vegetables</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Juice</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Food</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Dry Fruits</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Vegetables</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded text-sm">Juice</span>
                             </div>
                         </div>
+
                     </div>
+
                 </div>
                 <div>
                     <div className="max-w-6xl   mr-10 px-10 py-10 grid grid-cols-1 md:grid-cols-2 gap-8 ">
@@ -331,7 +343,7 @@ function Products() {
 
             <div class="flex justify-center my-8">
                 <nav class="inline-flex items-center border border-gray-300 rounded overflow-hidden">
-                   <Link to="/"> <button class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200">Previous</button></Link>
+                    <Link to="/"> <button class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200">Previous</button></Link>
                     <Link to="/products"> <button class="px-4 py-2 bg-red-600 text-white border-l border-gray-300 hover:bg-red-700">1</button></Link>
                     <Link to="/Productlist2">  <button class="px-4 py-2 bg-white text-gray-700 border-l border-gray-300 !hover:bg-red-700">2</button></Link>
                     <Link to="/Allproductlist"> <button class="px-4 py-2 bg-white text-gray-700 border-l border-gray-300 hover:bg-red-700">3</button></Link>
