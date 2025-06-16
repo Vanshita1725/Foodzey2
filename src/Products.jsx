@@ -21,7 +21,7 @@ function Products() {
             <Nevbar />
             <div className="flex text-white bg-red-600 justify-between  py-3 lg:ps-42 px-4 lg:pe-37 ">
                 <p className="m-0">Product</p>
-                <p className="m-0">Home-Product</p>
+                <p className="m-0">Home / Product</p>
             </div>
 
             <div className="flex flex-col sm:flex-row sm:justify-evenly sm:items-center border border-gray-200 p-3 rounded-md bg-gray-50">
@@ -343,7 +343,13 @@ function Products() {
 
             <div class="flex justify-center my-8">
                 <nav class="inline-flex items-center border border-gray-300 rounded overflow-hidden">
-                    <Link to="/"> <button class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200">Previous</button></Link>
+                    <Link to="/"> <button
+                    onClick={() => setView('Previu')}
+                        className={`p-2 rounded border transition-colors duration-200 ${view === 'Filter'
+                                ? 'bg-red-600 text-white border-red-600'
+                                : 'bg-white text-black border-gray-300 hover:bg-red-50 hover:text-red-600 hover:border-red-600'
+                            }`}
+                                        >Previous</button></Link>
                     <Link to="/products"> <button class="px-4 py-2 bg-red-600 text-white border-l border-gray-300 hover:bg-red-700">1</button></Link>
                     <Link to="/Productlist2">  <button class="px-4 py-2 bg-white text-gray-700 border-l border-gray-300 !hover:bg-red-700">2</button></Link>
                     <Link to="/Allproductlist"> <button class="px-4 py-2 bg-white text-gray-700 border-l border-gray-300 hover:bg-red-700">3</button></Link>

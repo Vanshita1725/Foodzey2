@@ -158,8 +158,8 @@ const Checkout = () => {
                     </div>
                 </div>
 
-                <div className=' flex flex-col ! gap-3 ms-10'>           
-                         <div className="max-w-3xl mx-4 h-135  p-6 bg-white border rounded-md shadow-sm">
+                <div className=' flex flex-col ! gap-3 md:ms-10'>           
+                         <div className="max-w-3xl md:mx-4 h-135  p-6 bg-white border rounded-md shadow-sm">
                     {/* <!-- New Customer --> */}
                     <div className="mb-2">
                         <h2 className="!text-xl font-semibold mb-3">New Customer</h2>
@@ -177,7 +177,7 @@ const Checkout = () => {
                             </label>
                         </div>
 
-                        <p className="text-sm text-gray-600 me-43 mb-4">
+                        <p className="text-sm text-gray-600 md:me-43 mb-4">
                             By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.
                         </p>
 
@@ -221,7 +221,7 @@ const Checkout = () => {
                     </div>
                 </div>
 
-                <div className="max-w-4xl mx-4 p-6 bg-white border rounded-md shadow-sm">
+                <div className="max-w-4xl md:mx-4 p-6 bg-white border rounded-md shadow-sm">
                     <h2 className="!text-xl font-semibold mb-6">Billing Details</h2>
 
                     {/* <!-- Checkout Options --> */}
