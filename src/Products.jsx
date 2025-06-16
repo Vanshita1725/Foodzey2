@@ -19,7 +19,7 @@ function Products() {
         <div>
 
             <Nevbar />
-            <div className="flex text-white bg-red-600 justify-between  py-3 ps-42 pe-37 ">
+            <div className="flex text-white bg-red-600 justify-between  py-3 lg:ps-42 px-4 lg:pe-37 ">
                 <p className="m-0">Product</p>
                 <p className="m-0">Home-Product</p>
             </div>
@@ -77,7 +77,7 @@ function Products() {
             </div>
 
             <div className=" lg:flex">
-                <div className="w-full max-w-xs p-4 bg-white m-10 h-253  flex rounded-lg shadow-md space-y-6">
+                <div className="w-full max-w-xs p-4 bg-white m-4 h-253  flex rounded-lg shadow-md space-y-6">
                     <div class="w-full max-w-xs p-4 bg-white rounded shadow-md space-y-6">
 
                         {/* <!-- Product Category --> */}
@@ -172,7 +172,7 @@ function Products() {
 
                 </div>
                 <div>
-                    <div className="max-w-6xl   mr-10 px-10 py-10 grid grid-cols-1 md:grid-cols-2 gap-8 ">
+                    <div className="max-w-6xl   md:mr-10 px-10 py-10 grid grid-cols-1 md:grid-cols-2 gap-8 ">
                         {/* <!-- Left: Product Image + Thumbnails --> */}
                         <div>
                             <div className="bg-white p-4 rounded-lg shadow-md">

@@ -6,9 +6,9 @@ const Faq = () => {
   return (
     <div>
       <Nevbar />
-      <div className="flex text-white bg-red-600 justify-between text-center py-3 ps-42 pe-37 items-center ">
+      <div className="flex text-white bg-red-600 justify-between text-center py-3 lg:ps-42 lg:pe-37 px-4 items-center ">
                 <p className="m-0">Faq</p>
-                <p className="m-0">Home-Faq</p>
+                <p className="m-0">Home / Faq</p>
             </div>
 
             <div className="max-w-7xl mx-auto px-4 py-10">

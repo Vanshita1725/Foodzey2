@@ -10,7 +10,7 @@ const Ragistion = () => {
       <Nevbar />
        <div className="flex text-white bg-red-600 justify-between text-center py-3 ps-42 pe-37 items-center ">
                 <p className="m-0">Ragistion</p>
-                <p className="m-0">Home-Product</p>
+                <p className="m-0">Home / Ragistion</p>
             </div>
             
             <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">

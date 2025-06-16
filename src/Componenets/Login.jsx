@@ -8,9 +8,9 @@ const Login = () => {
   return (
     <div>
       <Nevbar/>
-       <div className="flex text-white bg-red-600 justify-between text-center py-3 ps-42 pe-37 items-center ">
+       <div className="flex text-white bg-red-600 justify-between text-center py-3 lg:ps-42 lg:pe-37 px-4 items-center ">
                 <p className="m-0">Login</p>
-                <p className="m-0">Home-Product</p>
+                <p className="m-0">Home / Login</p>
             </div>
       <div className=" flex items-center justify-center bg-gray-50 p-6 my-10">
   <div className="bg-white shadow-md rounded-lg w-full max-w-md p-6">
