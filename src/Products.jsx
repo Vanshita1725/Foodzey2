@@ -77,7 +77,7 @@ function Products() {
             </div>
 
             <div className=" lg:flex">
-                <div className="w-full max-w-xs p-4 bg-white ms-20 h-253  flex rounded-lg shadow-md md:space-y-6">
+                <div className="w-full max-w-xs p-4 bg-white ms-15 h-253  flex rounded-lg shadow-md md:space-y-6">
                     <div class="w-full max-w-xs p-4 bg-white rounded shadow-md space-y-6">
 
                         {/* <!-- Product Category --> */}
