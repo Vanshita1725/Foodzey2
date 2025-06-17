@@ -83,7 +83,7 @@ const Navbardropdown = ({ mode = 'horizontal' }) => {
             {item.dropdown && (
               <button
                 onClick={() => toggleDropdown(item.key)}
-                className="text-black"
+                className="text-black mt-1"
               >
                 <ion-icon name="chevron-down-outline"></ion-icon>
               </button>

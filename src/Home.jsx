@@ -284,8 +284,8 @@ function Home() {
           {/* <!-- Header --> */}
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold">Deals Of The Day</h2>
-            <a href="#" className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1">
-              All Deals <span className="text-lg">&rarr;</span>
+            <a href="#" className="text-sm text-gray-500 hover:text-gray-700 flex !no-underline items-center gap-1">
+              All Deals <span className="text-sm mt-1"><ion-icon name="arrow-forward-outline"></ion-icon></span>
             </a>
           </div>
 
