@@ -39,8 +39,19 @@ function Home() {
       <Nevbar />
 
 
-      <img src={img1} alt="" className=" w-full lg:h-full md:h-110" />
-      <img src={img} alt="" className="absolute lg:top-1/2 md:top-50 left-1/3 top-40 w-50 -translate-x-1/2 -translate-y-1/2 w-3/4 md:w-1/2" />
+      <div className="relative w-full">
+  {/* Background Image */}
+  <img src={img1} alt="" className="w-full h-auto lg:h-full md:h-110 object-cover" />
+
+  {/* Overlay Image */}
+  <img
+    src={img}
+    alt=""
+    className="absolute top-1/3 !left-1/3 transform -translate-x-1/2 -translate-y-1/2 
+               w-3/6 !md:w-1/2 !lg:w-1/3"
+  />
+</div>
+
       <div className=" mx-auto flex flex-col md:flex-row justify-around md:bottom-35 bottom-10  relative items-center gap-8">
 
 
@@ -74,7 +85,7 @@ function Home() {
         <p className="text-sm sm:text-base lg:text-xl text-red-500 font-semibold uppercase mb-2">
           Customer Favorites
         </p>
-        <p className="text-2xl md:text-4xl lg:text-6xl font-bold text-gray-900 mb-10">
+        <p className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-10">
           Popular Categories
         </p>
 
@@ -141,9 +152,9 @@ function Home() {
             <div className="h-full rounded-xl overflow-hidden  bg-cover bg-center flex flex-col justify-between text-white p-6" style={{ backgroundImage: `url(${banner})` }}>
               <h3 className="!text-4xl font-[Quicksand] font-bold px-2">Bring nature into your home</h3>
 
-              <button className="bg-red-500 hover:bg-red-600 flex bottom-30 relative text-white  text-sm font-semibold px-3 pt-2 pb-0 h-10 gap-2 rounded  w-max"> Shop Now
-                <p className="mt-1"> <ion-icon name="arrow-forward-outline"></ion-icon></p>
-              </button>
+            <Link to="/Products" className="!no-underline">  <button className="bg-red-500 hover:bg-red-600 flex bottom-30 relative text-white  text-sm font-semibold px-3 pt-2 pb-0 h-10 gap-2 rounded  w-max"> Shop Now
+                <p className="mt-1 !no-underline "> <ion-icon name="arrow-forward-outline"></ion-icon></p>
+              </button></Link>
 
             </div>
           </div>
@@ -243,10 +254,10 @@ function Home() {
         <div className="flex justify-between">
           <p className="md:text-4xl lg:text-6xl font-bold mt-2 mb-8 lg:w-140 w-90 leading-tight">Standout Dishes From Our Menu</p>
           <div className="flex gap-2" style={{ alignItems: "center" }} >
-            <button className="bg-gray-200 text-gray-700 lg:p-3 md:p-2 p-1 md:w-12 md:h-12 !text-3xl lg:w-16 lg:h-16 w-10 h-10  !rounded-full hover:bg-gray-300 ">
+            <button className="bg-gray-200 text-gray-700 lg:p-3 md:p-2 p-1 md:w-12 md:h-12 !text-3xl  w-10 h-10 flex items-center justify-center !rounded-full hover:bg-gray-300 ">
               <ion-icon name="chevron-back-outline"></ion-icon>
             </button>
-            <button className="bg-red-500 text-white lg:p-3 md:p-2 p-1 !text-3xl lg:w-16 lg:h-16 md:w-12 md:h-12 w-10 h-10 !rounded-full hover:bg-red-600">
+            <button className="bg-red-500 text-white lg:p-3 md:p-2 p-1 !text-3xl md:w-12 md:h-12 w-10 h-10  flex items-center justify-center !rounded-full hover:bg-red-600">
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </button>
           </div>
@@ -402,7 +413,7 @@ function Home() {
                 </h2>
 
                 {/* Feature 1 */}
-                <div className="flex items-start gap-4 mb-6 p-4 bg-white rounded-xl shadow hover:shadow-md transition">
+                <div className="flex items-start gap-4 mb-6 p-4 bg-white mt-4 rounded-xl shadow hover:shadow-md transition">
                   <div className="bg-yellow-100 p-3 rounded-full flex items-center justify-center">
                     <img src={icon01} alt="" className="w-15 sm:w-15" />
                   </div>
@@ -480,45 +491,45 @@ function Home() {
         </section>
 
         {/* <!-- Feature Cards --> */}
-        <section className="max-w-7xl mx-auto px-4 pb-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <section className="max-w-7xl mx-0 px-4 pb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
             {/* Feature Item */}
-            <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
+            <div className="!bg-gray-200 p-2 flex items-center gap-3 rounded-lg shadow">
               <img src={offers} alt="Offer Icon" className="h-10 w-10" />
               <div>
-                <h4 className="font-semibold text-lg">Best prices & offers</h4>
+                <h4 className="font-semibold !text-lg">Best prices & offers</h4>
                 <p className="text-sm text-gray-500">Orders $50 or more</p>
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
+            <div className="bg-gray-200 p-2 flex items-center gap-3 rounded-lg shadow">
               <img src={offers1} alt="Free Delivery" className="h-10 w-10" />
               <div>
-                <h4 className="font-semibold text-lg">Free delivery</h4>
+                <h4 className="font-semibold !text-lg">Free delivery</h4>
                 <p className="text-sm text-gray-500">24/7 amazing services</p>
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
+            <div className="bg-gray-200 p-2 flex items-center gap-3 rounded-lg shadow">
               <img src={offers2} alt="Daily Deal" className="h-10 w-10" />
               <div>
-                <h4 className="font-semibold text-lg">Great daily deal</h4>
+                <h4 className="font-semibold !text-lg">Great daily deal</h4>
                 <p className="text-sm text-gray-500">When you sign up</p>
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
+            <div className="bg-gray-200 p-2 flex items-center gap-3 rounded-lg shadow">
               <img src={offers3} alt="Wide Assortment" className="h-10 w-10" />
               <div>
-                <h4 className="font-semibold text-lg">Wide assortment</h4>
+                <h4 className="font-semibold !text-lg">Wide assortment</h4>
                 <p className="text-sm text-gray-500">Mega Discounts</p>
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 flex items-center gap-3 rounded-lg shadow">
+            <div className="bg-gray-200 p-2 flex items-center gap-3 rounded-lg shadow">
               <img src={offers4} alt="Easy Returns" className="h-10 w-10" />
               <div>
-                <h4 className="font-semibold text-lg">Easy returns</h4>
+                <h4 className="font-semibold !text-lg">Easy returns</h4>
                 <p className="text-sm text-gray-500">Within 30 days</p>
               </div>
             </div>
