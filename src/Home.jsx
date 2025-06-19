@@ -32,7 +32,7 @@ import Footer from "./Componenets/Fotter";
 import { Link } from "react-router";
 
 function Home() {
-
+ 
 
   return (
     <div>
@@ -40,23 +40,22 @@ function Home() {
 
 
       <div className="relative w-full">
-  {/* Background Image */}
-  <img src={img1} alt="" className="w-full h-auto lg:h-full md:h-110 object-cover" />
+        {/* Background Image */}
+        <img src={img1} alt="" className="w-full h-auto lg:h-full md:h-110 object-cover" />
 
-  {/* Overlay Image */}
-  <img
-    src={img}
-    alt=""
-    className="absolute top-1/3 !left-1/3 transform -translate-x-1/2 -translate-y-1/2 
+        {/* Overlay Image */}
+        <img
+          src={img}
+          alt=""
+          className="absolute top-1/3 !left-1/3 transform -translate-x-1/2 -translate-y-1/2 
                w-3/6 !md:w-1/2 !lg:w-1/3"
-  />
-</div>
+        />
+      </div>
 
       <div className=" mx-auto flex flex-col md:flex-row justify-around md:bottom-35 bottom-10  relative items-center gap-8">
 
 
-       <Link to="/Products" className="!no-underline"> <button className="flex items-center opacity-70  rounded-full overflow-hidden shadow-lg">
-
+        <Link to="/Products" className="!no-underline"> <button className="flex items-center opacity-70  rounded-full overflow-hidden shadow-lg">
           <span className="bg-[#E6D49D] text-[#5C4B2C] md:h-auto h-8 md:w-51  item-center rounded-full flex font-bold">
             <span className="bg-[#5C4B2C] text-[#d2be87] p-2 flex rounded-l-full text-2xl font-black items-center justify-center">
               <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -152,7 +151,7 @@ function Home() {
             <div className="h-full rounded-xl overflow-hidden  bg-cover bg-center flex flex-col justify-between text-white p-6" style={{ backgroundImage: `url(${banner})` }}>
               <h3 className="!text-4xl font-[Quicksand] font-bold px-2">Bring nature into your home</h3>
 
-            <Link to="/Products" className="!no-underline">  <button className="bg-red-500 hover:bg-red-600 flex bottom-30 relative text-white  text-sm font-semibold px-3 pt-2 pb-0 h-10 gap-2 rounded  w-max"> Shop Now
+              <Link to="/Products" className="!no-underline">  <button className="bg-red-500 hover:bg-red-600 flex bottom-30 relative text-white  text-sm font-semibold px-3 pt-2 pb-0 h-10 gap-2 rounded  w-max"> Shop Now
                 <p className="mt-1 !no-underline "> <ion-icon name="arrow-forward-outline"></ion-icon></p>
               </button></Link>
 
@@ -177,9 +176,9 @@ function Home() {
               <div className="h-full bg-red-500 w-[75%]"></div>
             </div>
             <p className="text-sm text-gray-600 mt-1">Sold: 90/120</p>
-            <button className=" bg-red-500 hover:bg-red-600 w-full text-white text-sm  py-2 rounded">
+           <Link to="/Cart"className="!no-underline" >  <button className=" bg-red-500 hover:bg-red-600 w-full text-white text-sm  py-2 rounded">
               Add To Cart
-            </button>
+            </button></Link>
           </div>
 
           {/* <!-- Product Card 2 --> */}
@@ -199,9 +198,9 @@ function Home() {
               <div className="h-full bg-red-500 w-[75%]"></div>
             </div>
             <p className="text-sm text-gray-600 mt-1">Sold: 90/120</p>
-            <button className=" bg-red-500 hover:bg-red-600 w-full text-white text-sm  py-2 rounded">
+          <Link to="/Cart"className="!no-underline" >   <button className=" bg-red-500 hover:bg-red-600 w-full text-white text-sm  py-2 rounded">
               Add To Cart
-            </button>
+            </button></Link>
           </div>
 
           {/* <!-- Product Card 3 --> */}
@@ -221,9 +220,9 @@ function Home() {
               <div className="h-full bg-red-500 w-[75%]"></div>
             </div>
             <p className="text-sm text-gray-600 mt-1">Sold: 90/120</p>
-            <button className=" bg-red-500 hover:bg-red-600 w-full text-white text-sm  py-2 rounded">
+          <Link to="/Cart"className="!no-underline" >   <button className=" bg-red-500 hover:bg-red-600 w-full text-white text-sm  py-2 rounded">
               Add To Cart
-            </button>
+            </button></Link>
           </div>
 
           {/* <!-- Product Card 4 --> */}
@@ -243,9 +242,9 @@ function Home() {
               <div className="h-full bg-red-500 w-[75%]"></div>
             </div>
             <p className="text-sm text-gray-600 mt-1">Sold: 90/120</p>
-            <button className=" bg-red-500 hover:bg-red-600 w-full text-white text-sm  py-2 rounded">
+           <Link to="/Cart"className="!no-underline" >  <button className=" bg-red-500 hover:bg-red-600 w-full text-white text-sm  py-2 rounded">
               Add To Cart
-            </button>
+            </button></Link>
           </div>
         </div>
       </section>
@@ -254,7 +253,7 @@ function Home() {
         <div className="flex justify-between">
           <p className="md:text-4xl lg:text-6xl font-bold mt-2 mb-8 lg:w-140 w-90 leading-tight">Standout Dishes From Our Menu</p>
           <div className="flex gap-2" style={{ alignItems: "center" }} >
-            <button className="bg-gray-200 text-gray-700 lg:p-3 md:p-2 p-1 md:w-12 md:h-12 !text-3xl  w-10 h-10 flex items-center justify-center !rounded-full hover:bg-gray-300 ">
+            <button className="bg-gray-200 text-gray-700 lg:p-3 md:p-2 p-1 md:w-12 md:h-12 !text-3xl  w-10 h-10 flex items-center justify-center !rounded-full hover:bg-gray-300">
               <ion-icon name="chevron-back-outline"></ion-icon>
             </button>
             <button className="bg-red-500 text-white lg:p-3 md:p-2 p-1 !text-3xl md:w-12 md:h-12 w-10 h-10  flex items-center justify-center !rounded-full hover:bg-red-600">
@@ -281,7 +280,8 @@ function Home() {
               <img alt="Vegetable salad" className="w-40 h-40 object-cover rounded-full mx-auto" src={salad2}></img>
               <h3 className="text-lg font-semibold text-center mt-4">Vegetable salad</h3>
               <p className="text-gray-500 text-center text-sm mt-1">Description of the item</p>
-            </div><div className="bg-white p-6 rounded-2xl shadow-md relative">
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow-md relative">
               <div className="absolute top-0 right-0 bg-red-500 text-white p-2 rounded-bl-xl">
                 <ion-icon role="img" className="md hydrated" name="heart-outline"></ion-icon>
               </div>
@@ -318,9 +318,9 @@ function Home() {
                     <span className="text-green-600 font-semibold text-lg">$32.85</span>
                     <span className="text-gray-400 line-through ml-2 text-sm">$33.8</span>
                   </div>
-                  <button className="bg-red-500 text-white text-sm px-3 py-2 !rounded-md flex items-center gap-1">
+                  <Link to="/Cart"className="!no-underline" >  <button className="bg-red-500 text-white text-sm px-3 py-2 !rounded-md flex items-center gap-1">
                     <ion-icon name="cart-outline"></ion-icon> Add
-                  </button>
+                  </button> </Link>
                 </div>
               </div>
             </div>
@@ -342,9 +342,9 @@ function Home() {
                     <span className="text-green-600 font-semibold text-lg">$24.85</span>
                     <span className="text-gray-400 line-through ml-2 text-sm">$26.8</span>
                   </div>
-                  <button className="bg-red-500 text-white text-sm px-3 py-2 !rounded-md flex items-center gap-1">
+                  <Link to="/Cart"className="!no-underline" >  <button className="bg-red-500 text-white text-sm px-3 py-2 !rounded-md flex items-center gap-1">
                     <ion-icon name="cart-outline"></ion-icon> Add
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>
@@ -365,9 +365,9 @@ function Home() {
                     <span className="text-green-600 font-semibold text-lg">$12.85</span>
                     <span className="text-gray-400 line-through ml-2 text-sm">$13.8</span>
                   </div>
-                  <button className="bg-red-500 text-white text-sm px-3 py-2 !rounded-md flex items-center gap-1">
+                  <Link to="/Cart"className="!no-underline" >   <button className="bg-red-500 text-white text-sm px-3 py-2 !rounded-md flex items-center gap-1">
                     <ion-icon name="cart-outline"></ion-icon> Add
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>
@@ -388,9 +388,9 @@ function Home() {
                     <span className="text-green-600 font-semibold !text-lg">$15.85</span>
                     <span className="text-gray-400 line-through ml-2 text-sm ">$16.8</span>
                   </div>
-                  <button className="bg-red-500 text-white text-sm px-3 py-2 !rounded-md flex items-center gap-1">
-                    <ion-icon name="cart-outline"></ion-icon> Add
-                  </button>
+                <Link to="/Cart"className="!no-underline" >  <button className="bg-red-500  text-white text-sm px-3 py-2 !rounded-md flex items-center gap-1">
+                    <ion-icon name="cart-outline "></ion-icon> Add
+                  </button></Link>
                 </div>
               </div>
             </div>

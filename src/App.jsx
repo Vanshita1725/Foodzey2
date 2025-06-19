@@ -17,6 +17,7 @@ import Ragistion from "./Componenets/Ragistion";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
 import Faq from "./Faq";
+import Wishlist from "./Wishlist";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             <Route path="/Cart" element={<Cart />} />
             <Route path="/Checkout" element={<Checkout/>} />
             <Route path="/Faq" element={<Faq />} />
+            <Route path="/Wishlist" element={<Wishlist />} />
             <Route path="*" element={<h1 className="text-center my-5">404 Not Found</h1>} ></Route>
 
         </Routes>

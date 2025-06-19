@@ -33,7 +33,7 @@ const toggleDropdown = (menuName) => {
               <p className="m-0 md:hidden  font-medium text-sm flex ">Account</p>
             </div>
             <div className="flex items-center justify-center gap-2 p-0 md:p-4">
-              <ion-icon name="heart-outline"></ion-icon>
+            <Link to="/Wishlist" className='!text-black'> <ion-icon name="heart-outline"></ion-icon></Link> 
               <p className="m-0 flex  font-medium text-sm md:hidden ">Wishlist</p>
             </div>
             <div className="flex items-center justify-center gap-2 p-0 md-p-4">
@@ -75,7 +75,7 @@ const toggleDropdown = (menuName) => {
               <p className="m-0 md:flex  font-medium text-sm hidden ">Account</p>
             </div>
             <div className="flex items-center justify-center gap-2 p-0 md:p-4">
-              <ion-icon name="heart-outline"></ion-icon>
+             <Link to="/Wishlist" className='text-black'> <ion-icon name="heart-outline"></ion-icon></Link>
               <p className="m-0 md:flex  font-medium text-sm hidden ">Wishlist</p>
             </div>
             <div className="flex items-center justify-center gap-2 p-0 md-p-4">

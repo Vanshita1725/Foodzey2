@@ -14,7 +14,7 @@ import { FaFilter, FaThLarge, FaThList } from 'react-icons/fa';
 import { Link } from 'react-router';
 
 const Allproductlist = () => {
- const [view, setView] = useState('grid');
+ const [view, setView] = useState('grid'); // default view
   const [sort, setSort] = useState('featured');
 
   return (
@@ -26,32 +26,41 @@ const Allproductlist = () => {
             </div>
 
         <div className="flex flex-col sm:flex-row sm:justify-evenly sm:items-center border border-gray-200 p-3 rounded-md bg-gray-50">
-      <div className="flex items-center gap-2 mb-2 sm:mb-0">
-        <button className="p-2 bg-white rounded hover:bg-gray-100 border">
-          <FaFilter />
-        </button>
-        <button
-          onClick={() => setView('grid')}
-          className={`p-2 rounded border ${
-            view === 'grid'
-              ? 'bg-red-600 text-white'
-              : 'bg-white text-black hover:bg-gray-100'
-          }`}
-        >
-          <FaThLarge />
-        </button>
-        <button
-          onClick={() => setView('list')}
-          className={`p-2 rounded border ${
-            view === 'list'
-              ? 'bg-red-600 text-white'
-              : 'bg-white text-black hover:bg-gray-100'
-          }`}
-        >
-          <FaThList />
-        </button>
-        <span className="ml-3 text-sm text-gray-700">We found 29 items for you!</span>
-      </div>
+       <div className="flex flex-wrap items-center gap-2 mb-4 sm:mb-0">
+                    <button
+                        onClick={() => setView('Filter')}
+                        className={`p-2 rounded border transition-colors duration-200 ${view === 'Filter'
+                                ? 'bg-red-600 text-white border-red-600'
+                                : 'bg-white text-black border-gray-300 hover:bg-red-50 hover:text-red-600 hover:border-red-600'
+                            }`}
+                    >
+                        <FaFilter />
+                    </button>
+
+                    <button
+                        onClick={() => setView('grid')}
+                        className={`p-2 rounded border transition-colors duration-200 ${view === 'grid'
+                                ? 'bg-red-600 text-white border-red-600'
+                                : 'bg-white text-black border-gray-300 hover:bg-red-50 hover:text-red-600 hover:border-red-600'
+                            }`}
+                    >
+                        <FaThLarge />
+                    </button>
+
+                    <button
+                        onClick={() => setView('list')}
+                        className={`p-2 rounded border transition-colors duration-200 ${view === 'list'
+                                ? 'bg-red-600 text-white border-red-600'
+                                : 'bg-white text-black border-gray-300 hover:bg-red-50 hover:text-red-600 hover:border-red-600'
+                            }`}
+                    >
+                        <FaThList />
+                    </button>
+
+                    <span className="ml-3 text-sm text-gray-700">
+                        We found <span className="font-semibold">29</span> items for you!
+                    </span>
+                </div>
 
       <div>
         <label className="text-sm text-gray-600 mr-2">Sort By :</label>
@@ -76,9 +85,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
+                                                      <Link to="/Products"className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -125,9 +134,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
+                                                     <Link to="/Products"className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -173,9 +182,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
+                                                       <Link to="/Products"className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -220,9 +229,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
+                                                       <Link to="/Products"className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -265,9 +274,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
+                                                       <Link to="/Products"className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -310,9 +319,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
+                                                       <Link to="/Products"className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -357,9 +366,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1  -mt-8 z-10">
+                                                       <Link to="/Products"className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -405,9 +414,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
+                                                       <Link to="/Products" className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -454,9 +463,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full px-2 py-1  -mt-8 z-10">
+                                                      <Link to="/Products"className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2 ">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -500,9 +509,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
+                                                      <Link to="/Products" className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -546,9 +555,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
+                                                       <Link to="/Products" className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
@@ -593,9 +602,9 @@ const Allproductlist = () => {
                                                           className="w-full h-48 object-contain rounded-md" />
                                                   </div>
                                                   <div className="flex justify-center">
-                                                      <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
+                                                       <Link to="/Products" className='text-black'> <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                                           <ion-icon name="lock-closed-outline"></ion-icon>
-                                                      </div>
+                                                      </div></Link>
                                                   </div>
                                                   <div className="text-center p-4 pt-2">
                                                       <p className="text-sm text-gray-500">Snacks</p>
