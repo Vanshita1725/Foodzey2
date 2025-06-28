@@ -378,6 +378,7 @@ function Home() {
                             ₹{product.originalPrice}
                           </span>
                         )}
+                      
                       </div>
                       <Link to={`/product/${product._id}`} className="!no-underline">
                         <button className="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-2 rounded-md flex items-center gap-1">
