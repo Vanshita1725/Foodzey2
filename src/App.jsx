@@ -18,6 +18,10 @@ import Cart from "./Cart";
 import Checkout from "./Checkout";
 import Faq from "./Faq";
 import Wishlist from "./Wishlist";
+import Forgetpassword from "./Forgetpassword";
+import Changepassword from "./Changepassword";
+import Sendotp from "./Sendotp";
+import Verifyotp from "./verifyotp";
 
 
 function App() {
@@ -46,6 +50,10 @@ function App() {
             <Route path="/Checkout" element={<Checkout/>} />
             <Route path="/Faq" element={<Faq />} />
             <Route path="/Wishlist" element={<Wishlist />} />
+            <Route path="/Forgetpassword" element={< Forgetpassword/>}/>
+            <Route path="/Changepassword" element={<Changepassword />} />
+            <Route path="/Sendotp" element={<Sendotp />} />
+            <Route path="/Verifyotp" element={< Verifyotp/>} />
             <Route path="*" element={<h1 className="text-center my-5">404 Not Found</h1>} ></Route>
 
         </Routes>

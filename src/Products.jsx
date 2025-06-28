@@ -8,8 +8,9 @@ import product5 from "./assets/13.jpg.png";
 import banner1 from "./assets/1.jpg (1).png";
 import banner2 from "./assets/2.jpg.png";
 import { Link } from "react-router";
+import axios from "axios";
 import { FaFilter, FaThLarge, FaThList } from 'react-icons/fa';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function Products() {
 
     const [view, setView] = useState('grid'); // default view
@@ -35,6 +36,85 @@ function Products() {
         `tab-button px-4 py-2 focus:outline-none border-b-2 transition-colors duration-300 ${activeTab === tabName
             ? 'text-red-500 border-red-500'
             : 'text-gray-500 hover:text-red-500 border-transparent'}`;
+
+            
+  const handleAddToCart = async () => {
+  const token = localStorage.getItem("token");
+  console.log("Token before add to cart:", token); // Debug log
+  if (!token) {
+    alert("You must be logged in to add items to the cart.");
+    return;
+  }
+  // Set these values as per your product
+  const productId = "6790aefbeea87354a2095027";
+  const price = 23000;
+  const quantityToAdd = quantity > 0 ? quantity : 1;
+  const productSize = "12GB+512GB"; // Use the correct size for your API
+  const productColour = "Black";
+  const totalPrice = price * quantityToAdd;
+
+  try {
+    const response = await axios.post(
+      "https://ecommerce-shop-qg3y.onrender.com/api/cart/addToCart",
+      {
+        productId,
+        quantity: quantityToAdd,
+        price,
+        totalPrice,
+        productColour,
+        productSize,
+      },
+      {
+        headers: {
+          Authorization: `${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    console.log(" Add to cart response:", response.data);
+    alert("Product added to cart successfully!");
+  } catch (err) {
+    console.error(" Error adding to cart:", err.response?.data || err.message);
+
+    if (err.response?.status === 401) {
+      alert("Unauthorized. Please log in again.");
+    } else {
+      alert("Failed to add to cart.");
+    }
+  }
+};
+
+    // API products state for Popular Products
+    const [apiProducts, setApiProducts] = useState([]);
+    const [apiLoading, setApiLoading] = useState(true);
+    const [apiError, setApiError] = useState(null);
+
+    useEffect(() => {
+        setApiLoading(true);
+        setApiError(null);
+        // Fetch all products from the API (no id param)
+        axios.get("https://ecommerce-shop-qg3y.onrender.com/api/product/displayAll?category=")
+            .then(res => {
+                // Handle both array and single product object
+                if (res.data && res.data.data) {
+                    if (Array.isArray(res.data.data)) {
+                        setApiProducts(res.data.data);
+                    } else if (res.data.data.product) {
+                        setApiProducts([res.data.data.product]);
+                    } else {
+                        setApiProducts([]);
+                    }
+                } else {
+                    setApiProducts([]);
+                }
+                setApiLoading(false);
+            })
+            .catch(err => {
+                setApiError("Failed to load products");
+                setApiLoading(false);
+            });
+    }, []);
 
     return (
         <div>
@@ -270,7 +350,12 @@ function Products() {
                                     />
                                     <button className="px-2 !text-lg"><ion-icon name="add-outline"></ion-icon></button>
                                 </div>
-                                <button className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded shadow">Add To Cart</button>
+                                <button
+  onClick={handleAddToCart}
+  className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded shadow"
+>
+  Add To Cart
+</button>
                                 <div className="flex space-x-2">
                                     {/* Heart Icon Button */}
                                     <button
@@ -367,57 +452,75 @@ function Products() {
 
                 {/* <!-- Product Grid --> */}
                 <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                    {/* <!-- Card --> */}
-                    <div className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition">
-                        <div className="bg-gray-50 p-4 rounded">
-                            <img src={product} alt="Product" className="mx-auto h-40 object-contain" />
+                    {apiLoading && (
+                        <div className="col-span-full text-center text-gray-500">Loading products...</div>
+                    )}
+                    {apiError && (
+                        <div className="col-span-full text-center text-red-500">{apiError}</div>
+                    )}
+                    {apiProducts && apiProducts.length > 0 ? (
+                        apiProducts.map((item, idx) => (
+                            <div key={item._id || idx} className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition">
+                                <div className="bg-gray-50 p-4 rounded">
+                                    <img src={item.product_images && item.product_images[0] ? item.product_images[0] : product} alt={item.name} className="mx-auto h-40 object-contain" />
+                                </div>
+                                <div className="mt-4">
+                                    <p className="text-xs text-gray-400">{item.categoryName || 'Category'}</p>
+                                    <p className="text-xs text-gray-400">({item.stock || 'In Stock'})</p>
+                                    <h3 className="!text-sm font-semibold mt-1">{item.name}</h3>
+                                    <p className="text-red-600 font-bold mt-2">${item.price} <span className="line-through text-gray-400 text-sm ml-1">${(item.price * 1.1).toFixed(2)}</span></p>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        // Fallback Static Cards (unchanged)
+                        <>
+                        <div className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition">
+                            <div className="bg-gray-50 p-4 rounded">
+                                <img src={product} alt="Product" className="mx-auto h-40 object-contain" />
+                            </div>
+                            <div className="mt-4">
+                                <p className="text-xs text-gray-400">Snacks</p>
+                                <p className="text-xs text-gray-400">(4.5)</p>
+                                <h3 className="!text-sm font-semibold mt-1">Best snakes with hazel nut mix pack 200gm</h3>
+                                <p className="text-red-600 font-bold mt-2">$120.25 <span className="line-through text-gray-400 text-sm ml-1">$123.25</span></p>
+                            </div>
                         </div>
-                        <div className="mt-4">
-                            <p className="text-xs text-gray-400">Snacks</p>
-                            <p className="text-xs text-gray-400">(4.5)</p>
-                            <h3 className="!text-sm font-semibold mt-1">Best snakes with hazel nut mix pack 200gm</h3>
-                            <p className="text-red-600 font-bold mt-2">$120.25 <span className="line-through text-gray-400 text-sm ml-1">$123.25</span></p>
+                        <div className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition">
+                            <div className="bg-gray-50 p-4 rounded">
+                                <img src={product1} alt="Product" className="mx-auto h-40 object-contain" />
+                            </div>
+                            <div className="mt-4">
+                                <p className="text-xs text-gray-400">Snacks</p>
+                                <p className="text-xs text-gray-400">(5.0)</p>
+                                <h3 className="!text-sm font-semibold mt-1">Sweet snakes crunchy nut mix 250gm pack</h3>
+                                <p className="text-red-600 font-bold mt-2">$100.00 <span className="line-through text-gray-400 text-sm ml-1">$110.00</span></p>
+                            </div>
                         </div>
-                    </div>
-
-                    {/* <!-- Card --> */}
-                    <div className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition">
-                        <div className="bg-gray-50 p-4 rounded">
-                            <img src={product1} alt="Product" className="mx-auto h-40 object-contain" />
+                        <div className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition">
+                            <div className="bg-gray-50 p-4 rounded">
+                                <img src={banner1} alt="Product" className="mx-auto h-40 object-contain" />
+                            </div>
+                            <div className="mt-4">
+                                <p className="text-xs text-gray-400">Snacks</p>
+                                <p className="text-xs text-gray-400">(4.5)</p>
+                                <h3 className="!text-sm font-semibold mt-1">Best snakes with hazel nut mix pack 200gm</h3>
+                                <p className="text-red-600 font-bold mt-2">$120.25 <span className="line-through text-gray-400 text-sm ml-1">$123.25</span></p>
+                            </div>
                         </div>
-                        <div className="mt-4">
-                            <p className="text-xs text-gray-400">Snacks</p>
-                            <p className="text-xs text-gray-400">(5.0)</p>
-                            <h3 className="!text-sm font-semibold mt-1">Sweet snakes crunchy nut mix 250gm pack</h3>
-                            <p className="text-red-600 font-bold mt-2">$100.00 <span className="line-through text-gray-400 text-sm ml-1">$110.00</span></p>
+                        <div className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition">
+                            <div className="bg-gray-50 p-4 rounded">
+                                <img src={banner2} alt="Product" className="mx-auto h-40 object-contain" />
+                            </div>
+                            <div className="mt-4">
+                                <p className="text-xs text-gray-400">Snacks</p>
+                                <p className="text-xs text-gray-400">(5.0)</p>
+                                <h3 className="!text-sm font-semibold mt-1">Sweet snakes crunchy nut mix 250gm pack</h3>
+                                <p className="text-red-600 font-bold mt-2">$100.00 <span className="line-through text-gray-400 text-sm ml-1">$110.00</span></p>
+                            </div>
                         </div>
-                    </div>
-
-                    {/* <!-- Card --> */}
-                    <div className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition">
-                        <div className="bg-gray-50 p-4 rounded">
-                            <img src={banner1} alt="Product" className="mx-auto h-40 object-contain" />
-                        </div>
-                        <div className="mt-4">
-                            <p className="text-xs text-gray-400">Snacks</p>
-                            <p className="text-xs text-gray-400">(4.5)</p>
-                            <h3 className="!text-sm font-semibold mt-1">Best snakes with hazel nut mix pack 200gm</h3>
-                            <p className="text-red-600 font-bold mt-2">$120.25 <span className="line-through text-gray-400 text-sm ml-1">$123.25</span></p>
-                        </div>
-                    </div>
-
-                    {/* <!-- Card --> */}
-                    <div className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition">
-                        <div className="bg-gray-50 p-4 rounded">
-                            <img src={banner2} alt="Product" className="mx-auto h-40 object-contain" />
-                        </div>
-                        <div className="mt-4">
-                            <p className="text-xs text-gray-400">Snacks</p>
-                            <p className="text-xs text-gray-400">(5.0)</p>
-                            <h3 className="!text-sm font-semibold mt-1">Sweet snakes crunchy nut mix 250gm pack</h3>
-                            <p className="text-red-600 font-bold mt-2">$100.00 <span className="line-through text-gray-400 text-sm ml-1">$110.00</span></p>
-                        </div>
-                    </div>
+                        </>
+                    )}
                 </div>
             </section>
 

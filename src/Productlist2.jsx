@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nevbar from './Componenets/Nevbar';
 import Footer from './Componenets/Fotter';
 import banner1 from "./assets/1.jpg (1).png";
@@ -15,7 +15,7 @@ import { Link } from 'react-router';
 const Productlist2 = () => {
     const [view, setView] = useState('grid'); // default view
   const [sort, setSort] = useState('featured');
-
+   
   return (
     <div>
         <Nevbar />
