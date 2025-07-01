@@ -38,6 +38,7 @@ function App() {
             <Route path="/Ragistion" element={<Ragistion />} />
             <Route path="/Category" element={<Category />} />
             <Route path="/Products" element={<Products />} />
+            <Route path="/product/:id" element={<Products />} />
             <Route path="/Pages" element={<Pages />} />
             <Route path="/Blog" element={<Blog />} />
             <Route path="/Element" element={<Element />} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import Nevbar from "./Componenets/Nevbar";
 import img1 from "./assets/DeWatermark.jpg";
@@ -37,6 +37,18 @@ function Home() {
   const [categories, setCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [errorCategories, setErrorCategories] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const productIdFromQuery = queryParams.get("productId");
+
+  // Debug: log API URLs and methods
+  useEffect(() => {
+    console.log("[Products API] GET https://ecommerce-shop-qg3y.onrender.com/api/product/displayAllProduct");
+  }, []);
+  useEffect(() => {
+    console.log("[Categories API] GET https://ecommerce-shop-qg3y.onrender.com/api/category/displayAllCategory");
+  }, []);
 
   // Fetch all products
   useEffect(() => {
@@ -81,6 +93,71 @@ function Home() {
     fetchCategories();
   }, []);
 
+  // When apiProducts or productIdFromQuery changes, set selectedProduct
+  useEffect(() => {
+    if (productIdFromQuery && allProducts.length > 0) {
+      const found = allProducts.find(p => p._id === productIdFromQuery);
+      setSelectedProduct(found || allProducts[0]);
+    } else if (allProducts.length > 0) {
+      setSelectedProduct(allProducts[0]);
+    }
+  }, [allProducts, productIdFromQuery]);
+
+const handleAddToCart = async (product) => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    alert("You must be logged in to add items to the cart.");
+    return;
+  }
+
+  // Log the product object for debugging
+  console.log("Product object:", product);
+
+  // Check for undefined or invalid fields
+  if (!product._id) {
+    alert("Product ID is missing!");
+    return;
+  }
+  if (typeof product.price !== "number" || isNaN(product.price)) {
+    alert("Product price is missing or invalid!");
+    return;
+  }
+
+  // Prepare the full payload, ensuring color/size are strings
+  const productColour = Array.isArray(product.colour || product.color)
+    ? (product.colour || product.color)[0]
+    : (product.colour || product.color || "Red");
+  const productSize = Array.isArray(product.size)
+    ? product.size[0]
+    : (product.size || "Large");
+
+  const payload = {
+    productId: product._id,
+    quantity: 1,
+    price: product.price,
+    totalPrice: product.price,
+    productColour,
+    productSize
+  };
+  console.log("Add to cart payload:", payload);
+
+  try {
+    const response = await axios.post(
+      "https://ecommerce-shop-qg3y.onrender.com/api/cart/addToCart",
+      payload,
+      {
+        headers: {
+          Authorization: `${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    alert("Product added to cart successfully!");
+  } catch (err) {
+    console.error("Add to cart error:", err.response ? err.response.data : err.message);
+    alert("Failed to add to cart: " + JSON.stringify(err.response?.data || err.message));
+  }
+};
   return (
     <div>
       <Nevbar />
@@ -224,40 +301,40 @@ function Home() {
               </div>
             ) : allProducts.length > 0 ? (
               allProducts.slice(0, 4).map((product) => (
-                <div
-                  key={product._id}
-                  className="bg-white rounded-xl px-3 pb-3 relative shadow hover:shadow-lg transition"
-                >
-                  <span className="absolute -ms-4 bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-tl-lg rounded-br-lg">
-                    {product.brand}
-                  </span>
-                  <img
-                    src={product.product_images?.[0] || banner1}
-                    alt={product.name}
-                    className="h-32 mx-auto object-contain my-5"
-                  />
-                  <p className="text-gray-500 !text-sm">{product.brand}</p>
-                  <h3 className="font-bold !text-base pe-1 text-gray-800 h-10">
-                    {product.name}
-                  </h3>
-                  <div className="flex items-center mt-2 text-sm">
-                    <span className="text-yellow-400 text-lg">★</span>
-                  </div>
-                  <div className="mt-2 flex items-center gap-2">
-                    <span className="text-green-600 font-bold text-lg">
-                      ₹{product.price}
+                <Link to={`/Products?productId=${product._id}`} key={product._id} className="!no-underline">
+                  <div className="bg-white rounded-xl px-3 pb-3 relative shadow hover:shadow-lg transition">
+                    <span className="absolute -ms-4 bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-tl-lg rounded-br-lg">
+                      {product.brand}
                     </span>
-                  </div>
-                  <div className="w-full h-2 bg-gray-200 rounded mt-2 overflow-hidden">
-                    <div className="h-full bg-red-500 w-[75%]"></div>
-                  </div>
-                  <p className="text-sm text-gray-600 mt-1">Stock: {product.stock}</p>
-                  <Link to={`/product/${product._id}`} className="!no-underline">
-                    <button className="bg-red-500 hover:bg-red-600 w-full text-white text-sm py-2 rounded mt-2">
-                      View Details
+                    <img
+                      src={product.product_images?.[0] || banner1}
+                      alt={product.name}
+                      className="h-32 mx-auto object-contain my-5"
+                    />
+                    <p className="text-gray-500 !text-sm">{product.brand}</p>
+                    <h3 className="font-bold !text-base pe-1 text-gray-800 h-10">
+                      {product.name}
+                    </h3>
+                    <div className="flex items-center mt-2 text-sm">
+                      <span className="text-yellow-400 text-lg">★</span>
+                    </div>
+                    <div className="mt-2 flex items-center gap-2">
+                      <span className="text-green-600 font-bold text-lg">
+                        ₹{product.price}
+                      </span>
+                    </div>
+                    <div className="w-full h-2 bg-gray-200 rounded mt-2 overflow-hidden">
+                      <div className="h-full bg-red-500 w-[75%]"></div>
+                    </div>
+                    <p className="text-sm text-gray-600 mt-1">Stock: {product.stock}</p>
+                    <button
+                      className="bg-red-500 hover:bg-red-600 w-full text-white text-sm py-2 rounded mt-2"
+                      onClick={e => { e.preventDefault(); handleAddToCart(product); }}
+                    >
+                      add to cart
                     </button>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               ))
             ) : (
               <div className="col-span-4 text-gray-500 flex items-center justify-center min-h-[200px]">
@@ -360,7 +437,7 @@ function Home() {
                     />
                   </div>
                   <div className="p-4 bg-white -top-13 relative rounded-2xl w-62 overflow-hidden shadow-sm">
-                    <h3 className="!text-base font-semibold mb-1 font-[Quicksand] line-clamp-2">
+                    <h3 className="!text-base font-semibold mb-1 h-12 font-[Quicksand] line-clamp-2">
                       {product.name}
                     </h3>
                     <div className="flex item-center text-sm text-gray-500 mb-1">
@@ -378,14 +455,14 @@ function Home() {
                             ₹{product.originalPrice}
                           </span>
                         )}
-                      
                       </div>
-                      <Link to={`/product/${product._id}`} className="!no-underline">
-                        <button className="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-2 rounded-md flex items-center gap-1">
-                          <ion-icon name="cart-outline"></ion-icon> View
-                        </button>
-                      </Link>
                     </div>
+                    <button
+                      className="bg-red-500 hover:bg-red-600 w-full text-white text-sm py-2 rounded mt-2"
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      add to cart
+                    </button>
                   </div>
                 </div>
               ))}

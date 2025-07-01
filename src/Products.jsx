@@ -27,6 +27,8 @@ function Products() {
 
     const [quantity, setQuantity] = useState(0); // default value
 
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
     const handleChange = (e) => {
         const value = Math.max(0, parseInt(e.target.value) || 0); // enforce min = 1
         setQuantity(value);
@@ -115,6 +117,10 @@ function Products() {
                 setApiLoading(false);
             });
     }, []);
+
+    const handleProductClick = (product) => {
+        setSelectedProduct(product);
+    };
 
     return (
         <div>
@@ -276,46 +282,48 @@ function Products() {
                     <div className="max-w-6xl   md:mr-10 px-10 py-10 grid grid-cols-1 md:grid-cols-2 gap-8 ">
                         {/* <!-- Left: Product Image + Thumbnails --> */}
                         <div>
-                            <div className="bg-white p-4 rounded-lg shadow-md">
-                                <img src={product} alt="Main Product" className="w-full mx-auto" />
-                            </div>
+                            <div>
+                                {/* Main Product Image */}
+                                <div className="bg-white p-4 rounded-lg shadow-md">
+                                    <img src={(selectedProduct || apiProducts[0])?.product_images?.[0]} alt={(selectedProduct || apiProducts[0])?.name} className="w-full mx-auto" />
+                                </div>
 
-                            <div className="mt-4 flex gap-2 flex-wrap">
-                                <img src={product} className="w-19 h-19 border rounded-md p-1 cursor-pointer hover:border-red-500" />
-                                <img src={product1} className="w-19 h-19 border rounded-md p-1 cursor-pointer hover:border-red-500" />
-                                <img src={product3} className="w-19 h-19 border rounded-md p-1 cursor-pointer hover:border-red-500" />
-                                <img src={product4} className="w-19 h-19 border rounded-md p-1 cursor-pointer hover:border-red-500" />
-                                <img src={product5} className="w-19 h-19 border rounded-md p-1 cursor-pointer hover:border-red-500" />
+                                {/* Thumbnails */}
+                                <div className="mt-4 flex gap-2 flex-wrap">
+                                    {(selectedProduct || apiProducts[0])?.product_images?.map((img, idx) => (
+                                        <img key={idx} src={img} className="w-19 h-19 border rounded-md p-1 cursor-pointer hover:border-red-500" alt={`thumb-${idx}`} />
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
                         {/* <!-- Right: Product Info --> */}
                         <div>
-                            <h2 className="text-2xl font-semibold text-gray-800">Seeds Of Change Organic Quinoa, Brown</h2>
-                            <p className="text-gray-500 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. In, iure minus error doloribus saepe natus?</p>
+                            <h2 className="text-2xl font-semibold text-gray-800">{(selectedProduct || apiProducts[0])?.name}</h2>
+                            <p className="text-gray-500 mt-2">{(selectedProduct || apiProducts[0])?.description}</p>
 
                             <div className="border-b my-4"></div>
 
                             {/* <!-- Reviews --> */}
                             <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
                                 <div className="text-red-500 text-lg">★★★★★</div>
-                                <span>( 75 Review )</span>
+                                <span>({(selectedProduct || apiProducts[0])?.reviewsCount || 0} Review)</span>
                             </div>
 
                             {/* <!-- Details List --> */}
                             <div className="space-y-2 text-sm text-gray-700">
-                                <div className="flex"><span className="w-32 font-medium">Brand</span>: ESTA BETTERU CO</div>
-                                <div className="flex"><span className="w-32 font-medium">Flavour</span>: Super Saver Pack</div>
-                                <div className="flex"><span className="w-32 font-medium">Diet Type</span>: Vegetarian</div>
-                                <div className="flex"><span className="w-32 font-medium">Weight</span>: 200 Grams</div>
-                                <div className="flex"><span className="w-32 font-medium">Speciality</span>: Gluten Free, Sugar Free</div>
-                                <div className="flex"><span className="w-32 font-medium">Info</span>: Egg Free, Allergen-Free</div>
-                                <div className="flex"><span className="w-32 font-medium">Items</span>: 1</div>
+                                <div className="flex"><span className="w-32 font-medium">Brand</span>: {(selectedProduct || apiProducts[0])?.brand}</div>
+                                <div className="flex"><span className="w-32 font-medium">Flavour</span>: {(selectedProduct || apiProducts[0])?.flavour}</div>
+                                <div className="flex"><span className="w-32 font-medium">Diet Type</span>: {(selectedProduct || apiProducts[0])?.dietType}</div>
+                                <div className="flex"><span className="w-32 font-medium">Weight</span>: {(selectedProduct || apiProducts[0])?.weight}</div>
+                                <div className="flex"><span className="w-32 font-medium">Speciality</span>: {(selectedProduct || apiProducts[0])?.speciality}</div>
+                                <div className="flex"><span className="w-32 font-medium">Info</span>: {(selectedProduct || apiProducts[0])?.info}</div>
+                                <div className="flex"><span className="w-32 font-medium">Items</span>: {(selectedProduct || apiProducts[0])?.items}</div>
                             </div>
 
                             {/* <!-- Price --> */}
                             <div className="mt-6 text-red-600 text-2xl font-semibold">
-                                $120.25 <span className="text-gray-400 line-through text-base ml-2">$123.25</span>
+                                ₹{(selectedProduct || apiProducts[0])?.price} <span className="text-gray-400 line-through text-base ml-2">₹{(selectedProduct || apiProducts[0])?.originalPrice}</span>
                             </div>
 
                             {/* <!-- Size Options --> */}
@@ -460,7 +468,12 @@ function Products() {
                     )}
                     {apiProducts && apiProducts.length > 0 ? (
                         apiProducts.map((item, idx) => (
-                            <div key={item._id || idx} className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition">
+                            <div
+                                key={item._id || idx}
+                                className="border rounded-lg p-4 text-center shadow-sm hover:shadow-md transition"
+                                onClick={() => setSelectedProduct(item)}
+                                style={{ cursor: "pointer" }}
+                            >
                                 <div className="bg-gray-50 p-4 rounded">
                                     <img src={item.product_images && item.product_images[0] ? item.product_images[0] : product} alt={item.name} className="mx-auto h-40 object-contain" />
                                 </div>
