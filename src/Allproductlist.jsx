@@ -107,7 +107,7 @@ const Allproductlist = () => {
                                     className="w-full h-48 object-contain rounded-md" />
                             </div>
                             <div className="flex justify-center">
-                                <Link to="/Products" className='text-black'>
+                                <Link to={`/Products?productId=${item._id}`} className='text-black'>
                                     <div className="bg-white border border-gray-300 rounded-full p-2 py-1 -mt-8 z-10">
                                         <ion-icon name="lock-closed-outline"></ion-icon>
                                     </div>

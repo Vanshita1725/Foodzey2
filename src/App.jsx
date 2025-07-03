@@ -21,7 +21,7 @@ import Wishlist from "./Wishlist";
 import Forgetpassword from "./Forgetpassword";
 import Changepassword from "./Changepassword";
 import Sendotp from "./Sendotp";
-import Verifyotp from "./verifyotp";
+import Verifyotp from "./Verifyotp";
 
 
 function App() {
